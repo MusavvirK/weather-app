@@ -16,7 +16,18 @@ weatherForm.addEventListener("submit", (e) => {
 				messageOne.textContent = data.error;
 			} else {
 				messageOne.textContent = data.location;
-				messageTwo.textContent = data.forecast;
+				messageTwo.textContent =
+					"Current condition: " +
+					data.forecast.weather_description +
+					". " +
+					data.forecast.temperature +
+					" degree celsius outside. Wind speed is " +
+					data.forecast.wind_speed +
+					" kmph. " +
+					data.forecast.humidity +
+					"% humidity. There is a " +
+					data.forecast.rainfall +
+					"% chance of rain. ";
 			}
 		});
 	});

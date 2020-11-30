@@ -13,15 +13,13 @@ const forecast = (latitude, longitude, callback) => {
 		} else if (body.error) {
 			callback(body.error.info + " Unable to find location", undefined);
 		} else {
-			callback(
-				undefined,
-				body.current.weather_descriptions +
-					". It is currently " +
-					body.current.temperature +
-					" degrees out. There is a " +
-					body.current.precip +
-					"% chance of rain."
-			);
+			callback(undefined, {
+				weather_description: body.current.weather_descriptions,
+				temperature: body.current.temperature,
+				rainfall: body.current.precip,
+				humidity: body.current.humidity,
+				wind_speed: body.current.wind_speed,
+			});
 		}
 	});
 };
